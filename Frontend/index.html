@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Interiors | Premium Interior Design Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #c9a86c;
+            --dark: #1a1a1a;
+            --light: #f8f6f3;
+            --cream: #faf8f5;
+            --gray: #6b6b6b;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 80px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.4s ease;
+        }
+
+        nav.scrolled .logo {
+            color: var(--dark);
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav.scrolled .nav-links a {
+            color: var(--dark);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%),
+                        url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            color: var(--gold);
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 45px;
+            background: var(--gold);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            border: 2px solid var(--gold);
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--dark);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* About Section */
+        .about {
+            padding: 120px 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            background: var(--white);
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            right: -30px;
+            bottom: -30px;
+            border: 3px solid var(--gold);
+            z-index: -1;
+        }
+
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: var(--dark);
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .about-content h2 span {
+            color: var(--gold);
+        }
+
+        .about-content p {
+            color: var(--gray);
+            line-height: 1.9;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+            padding-top: 50px;
+            border-top: 1px solid #eee;
+        }
+
+        .stat-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            color: var(--gray);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 80px;
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .section-header {
+            margin-bottom: 70px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .vastu {
+            padding: 120px 80px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            text-align: center;
+        }
+
+        .vastu .section-header h2,
+        .vastu .section-header p {
+            color: var(--white);
+        }
+
+        .vastu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .vastu-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(201, 168, 108, 0.2);
+            transition: all 0.4s ease;
+            text-align: left;
+        }
+
+        .vastu-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            background: rgba(201, 168, 108, 0.1);
+        }
+
+        .vastu-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold) 0%, #d4b87a 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .vastu-icon i {
+            font-size: 24px;
+            color: var(--white);
+        }
+
+        .vastu-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .vastu-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .vastu-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .vastu-list li {
+            color: var(--gold);
+            font-size: 13px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(201, 168, 108, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .vastu-list li::before {
+            content: '✦';
+            font-size: 10px;
+        }
+
+        .vastu-tips {
+            background: rgba(201, 168, 108, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--gold);
+        }
+
+        .vastu-tips h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--gold);
+            margin-bottom: 25px;
+        }
+
+        .tip-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tip-content i {
+            font-size: 40px;
+            color: var(--gold);
+        }
+
+        .tip-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 50px 40px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--gold) 0%, #d4b87a 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+        }
+
+        .service-icon i {
+            font-size: 28px;
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 120px 80px;
+            background: var(--dark);
+        }
+
+        .portfolio .section-header h2,
+        .portfolio .section-header p {
+            color: var(--white);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            height: 350px;
+            cursor: pointer;
+        }
+
+        .portfolio-item:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: 100%;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .portfolio-overlay p {
+            color: var(--gold);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 120px 80px;
+            background: linear-gradient(135deg, var(--light) 0%, var(--cream) 100%);
+            text-align: center;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-item {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .testimonial-item.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .testimonial-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-style: italic;
+            color: var(--dark);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .testimonial-author img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: var(--dark);
+        }
+
+        .author-info p {
+            color: var(--gold);
+            font-size: 13px;
+        }
+
+        .slider-dots {
+            margin-top: 40px;
+        }
+
+        .slider-dots span {
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dots span.active {
+            background: var(--gold);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 120px 80px;
+            background: var(--white);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: var(--dark);
+            margin-bottom: 30px;
+        }
+
+        .contact-info p {
+            color: var(--gray);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 18px;
+        }
+
+        .contact-item h4 {
+            font-size: 14px;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .contact-item p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .contact-form {
+            background: var(--light);
+            padding: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            background: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px var(--gold);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 80px 80px 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-brand h3 span {
+            color: var(--gold);
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            font-size: 16px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled .menu-toggle span {
+            background: var(--dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about {
+                grid-template-columns: 1fr;
+                padding: 80px 40px;
+            }
+
+            .about-image::before {
+                display: none;
+            }
+
+            .vastu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .portfolio-item:first-child {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 30px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--dark);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.4s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                color: var(--white);
+                font-size: 24px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .btn-outline {
+                display: block;
+                margin: 15px 0 0 0;
+            }
+
+            .about,
+            .services,
+            .vastu,
+            .portfolio,
+            .testimonials,
+            .contact,
+            footer {
+                padding: 80px 30px;
+            }
+
+            .vastu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2,
+            .about-content h2,
+            .contact-info h2 {
+                font-size: 36px;
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-item:first-child {
+                grid-column: span 1;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">Luxe<span>.</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#vastu">Vastu Shastra</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-subtitle">Premium Interior Design Studio</p>
+            <h1>Transform Your Space Into a Masterpiece</h1>
+            <p>We craft elegant, functional interiors that reflect your personality and elevate your lifestyle. Experience luxury redefined.</p>
+            <a href="#contact" class="btn">Get Free Consultation</a>
+            <a href="#portfolio" class="btn btn-outline">View Our Work</a>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down fa-2x"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Interior Design Studio">
+        </div>
+        <div class="about-content">
+            <h2>Crafting Beautiful <span>Spaces</span> Since 2010</h2>
+            <p>At Luxe Interiors, we believe that great design is more than aesthetics - it's about creating environments that inspire, comfort, and delight. Our team of talented designers combines creativity with functionality to deliver spaces that are uniquely yours.</p>
+            <p>With over a decade of experience and hundreds of satisfied clients, we've established ourselves as a leading interior design studio known for our attention to detail and commitment to excellence.</p>
+            <a href="#contact" class="btn">Learn More About Us</a>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-item">
+                    <h3>12+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Design Awards</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vastu Interior Design Section -->
+    <section class="vastu" id="vastu">
+        <div class="section-header">
+            <h2>Vastu Interior Design</h2>
+            <p>Design your home according to Vastu Shastra principles for harmony, positivity, and prosperity</p>
+        </div>
+        <div class="vastu-grid">
+            <div class="vastu-card">
+                <div class="vastu-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Kitchen</h3>
+                <p>Heart of the home - Kitchen should be in Southeast direction</p>
+                <ul class="vastu-list">
+                    <li>Facing East while cooking</li>
+                    <li>Gas stove in Southeast</li>
+                    <li>Wash basin in East/Northeast</li>
+                    <li>Avoid kitchen in Northeast</li>
+                </ul>
+            </div>
+            <div class="vastu-card">
+                <div class="vastu-icon">
+                    <i class="fas fa-bed"></i>
+                </div>
+                <h3>Bedroom</h3>
+                <p>Rest and rejuvenation - Best in Southwest direction</p>
+                <ul class="vastu-list">
+                    <li>Head towards South/Southwest</li>
+                    <li>Place bed in Southwest corner</li>
+                    <li>Avoid mirrors facing bed</li>
+                    <li>Use soothing colors</li>
+                </ul>
+            </div>
+            <div class="vastu-card">
+                <div class="vastu-icon">
+                    <i class="fas fa-door-open"></i>
+                </div>
+                <h3>Main Door</h3>
+                <p>Gateway to fortune - Best in North, East or Northeast</p>
+                <ul class="vastu-list">
+                    <li>North - Growth & prosperity</li>
+                    <li>East - Health & happiness</li>
+                    <li>Northeast - Spiritual energy</li>
+                    <li>Avoid South & West facing</li>
+                </ul>
+            </div>
+            <div class="vastu-card">
+                <div class="vastu-icon">
+                    <i class="fas fa-om"></i>
+                </div>
+                <h3>Pooja Room</h3>
+                <p>Sacred space - Northeast corner is most auspicious</p>
+                <ul class="vastu-list">
+                    <li>Always in Northeast corner</li>
+                    <li>Facing East or North</li>
+                    <li>Keep clean and decorated</li>
+                    <li>Use brass/copper utensils</li>
+                </ul>
+            </div>
+            <div class="vastu-card">
+                <div class="vastu-icon">
+                    <i class="fas fa-shower"></i>
+                </div>
+                <h3>Bathroom</h3>
+                <p>Purification zone - Should be in Northwest or West</p>
+                <ul class="vastu-list">
+                    <li>Avoid Northeast bathroom</li>
+                    <li>Northwest is ideal location</li>
+                    <li>Keep doors closed always</li>
+                    <li>Proper ventilation must</li>
+                </ul>
+            </div>
+            <div class="vastu-card">
+                <div class="vastu-icon">
+                    <i class="fas fa-couch"></i>
+                </div>
+                <h3>Living Room</h3>
+                <p>Family gathering - North or East facing is best</p>
+                <ul class="vastu-list">
+                    <li>North - Career & business</li>
+                    <li>East - Knowledge & health</li>
+                    <li>Heavy furniture in South/West</li>
+                    <li>Use bright, warm colors</li>
+                </ul>
+            </div>
+            <div class="vastu-card">
+                <div class="vastu-icon">
+                    <i class="fas fa-stairs"></i>
+                </div>
+                <h3>Staircase</h3>
+                <p>Energy flow - Best in South or West area</p>
+                <ul class="vastu-list">
+                    <li>Avoid Northeast corner</li>
+                    <li>Clockwise winding preferred</li>
+                    <li>Number of steps - odd numbers</li>
+                    <li>No stairs in center of house</li>
+                </ul>
+            </div>
+            <div class="vastu-card">
+                <div class="vastu-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Lighting</h3>
+                <p>Positive energy - Proper light placement matters</p>
+                <ul class="vastu-list">
+                    <li>Bright lights in Northeast</li>
+                    <li>Warm lights in South/West</li>
+                    <li>Avoid dark corners</li>
+                    <li>Use natural light more</li>
+                </ul>
+            </div>
+        </div>
+        <div class="vastu-tips">
+            <h3>Vastu Quick Tips</h3>
+            <div class="tip-content">
+                <i class="fas fa-compass"></i>
+                <p><strong>Direction Matters:</strong> Northeast is the most sacred direction for spiritual energy. Always keep this area clean, well-lit, and clutter-free for maximum positive energy flow in your home.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <p>We offer comprehensive interior design solutions tailored to your unique needs and vision.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-couch"></i>
+                </div>
+                <h3>Living Room Design</h3>
+                <p>Create inviting living spaces that balance comfort with sophistication. From modern minimalist to classic elegance.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-bed"></i>
+                </div>
+                <h3>Bedroom Interiors</h3>
+                <p>Transform your bedroom into a serene sanctuary. We design peaceful retreats that promote rest and relaxation.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Kitchen Remodeling</h3>
+                <p>Modern, functional kitchens designed for cooking enthusiasts. Blend style with practicality seamlessly.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Office Interiors</h3>
+                <p>Design productive workspaces that inspire creativity. Boost employee morale with thoughtfully designed offices.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-paint-roller"></i>
+                </div>
+                <h3>Complete Renovation</h3>
+                <p>Full-scale home makeovers from concept to completion. Manage every detail of your transformation journey.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Eco-Friendly Design</h3>
+                <p>Sustainable interiors using eco-conscious materials. Beautiful spaces that respect our environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header">
+            <h2>Our Portfolio</h2>
+            <p>Explore our carefully curated collection of completed projects.</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Modern Living Room">
+                <div class="portfolio-overlay">
+                    <h3>Modern Living Room</h3>
+                    <p>Residential Project</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Bedroom">
+                <div class="portfolio-overlay">
+                    <h3>Luxury Master Suite</h3>
+                    <p>Residential Project</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Contemporary Kitchen">
+                <div class="portfolio-overlay">
+                    <h3>Contemporary Kitchen</h3>
+                    <p>Residential Project</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Executive Office">
+                <div class="portfolio-overlay">
+                    <h3>Executive Office</h3>
+                    <p>Commercial Project</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dining Area">
+                <div class="portfolio-overlay">
+                    <h3>Elegant Dining</h3>
+                    <p>Residential Project</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header">
+            <h2>What Our Clients Say</h2>
+            <p>Don't just take our word for it - hear from our happy clients.</p>
+        </div>
+        <div class="testimonial-slider">
+            <div class="testimonial-item active">
+                <p class="testimonial-text">"Luxe Interiors transformed our house into a home. Their attention to detail and creative vision exceeded all our expectations. We couldn't be happier with the results!"</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Sarah Johnson">
+                    <div class="author-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>Homeowner, Mumbai</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <p class="testimonial-text">"Professional, creative, and incredibly talented. The team understood our vision perfectly and delivered a workspace that has significantly improved our team's productivity."</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Michael Chen">
+                    <div class="author-info">
+                        <h4>Michael Chen</h4>
+                        <p>CEO, Tech Startup</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <p class="testimonial-text">"From concept to completion, the experience was seamless. Our restaurant now has the perfect ambiance that keeps customers coming back. Highly recommend!"</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Priya Sharma">
+                    <div class="author-info">
+                        <h4>Priya Sharma</h4>
+                        <p>Restaurant Owner</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-dots">
+            <span class="active" onclick="currentSlide(0)"></span>
+            <span onclick="currentSlide(1)"></span>
+            <span onclick="currentSlide(2)"></span>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Let's Create Something Beautiful Together</h2>
+                <p>Ready to transform your space? Get in touch with us today and let's discuss your project. Our team is here to bring your vision to life.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Visit Our Studio</h4>
+                            <p>123 Design Street, Andheri West, Mumbai 400053</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>+91 98765 43210</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>hello@luxeinteriors.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>Mon - Sat: 10:00 AM - 7:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Luxe<span>.</span></h3>
+                <p>Creating beautiful spaces that inspire and delight. Your vision, our expertise - together we transform houses into homes.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Residential Design</a></li>
+                    <li><a href="#">Commercial Spaces</a></li>
+                    <li><a href="#">Home Office</a></li>
+                    <li><a href="#">Renovation</a></li>
+                    <li><a href="#">Consultation</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Newsletter</h4>
+                <p style="color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 15px;">Subscribe for design tips and exclusive offers.</p>
+                <div class="form-group" style="margin-bottom: 0;">
+                    <input type="email" placeholder="Your email address" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Luxe Interiors. All rights reserved.</p>
+            <p>Designed with <i class="fas fa-heart" style="color: var(--gold);"></i> for beautiful spaces</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Testimonial slider
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.testimonial-item');
+        const dots = document.querySelectorAll('.slider-dots span');
+
+        function currentSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            slides[n].classList.add('active');
+            dots[n].classList.add('active');
+            slideIndex = n;
+        }
+
+        function autoSlide() {
+            slideIndex++;
+            if (slideIndex >= slides.length) slideIndex = 0;
+            currentSlide(slideIndex);
+        }
+
+        setInterval(autoSlide, 5000);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
